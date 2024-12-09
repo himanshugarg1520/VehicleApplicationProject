@@ -1,0 +1,25 @@
+{
+    "vehicles": [
+      {
+        "id": "1",
+        "vehicleNo": "MH12AB1234",
+        "chassisNo": "CHASSIS001",
+        "group": ["Group A"],
+        "manufacturer": "Toyota",
+        "modelNo": "Corolla",
+        "engineNo": "ENG001",
+        "type": "Car"
+      },
+      {
+        "id": "2",
+        "vehicleNo": "DL8CDE5678",
+        "chassisNo": "CHASSIS002",
+        "group": ["Group B"],
+        "manufacturer": "Hyundai",
+        "modelNo": "i20",
+        "engineNo": "ENG002",
+        "type": "Hatchback"
+      }
+    ]
+  }
+  

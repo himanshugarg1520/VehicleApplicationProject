@@ -1,0 +1,75 @@
+
+.mat-dialog-content {
+    padding: 20px;
+    max-width: 600px; 
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 16px; 
+  }
+  
+   mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    background-color: #f5f5f5;  
+   }
+  
+  button {
+    min-width: 100px;
+    margin-left: 8px;
+    font-weight: bold;
+  }
+  
+  button.mat-button {
+    background-color: #007bff; /* Blue button color */
+    color: blue;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.mat-button:hover {
+    background-color: #0056b3; 
+  }
+  
+  mat-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  mat-select {
+    width: 100%;
+    font-size: 14px;
+  }
+  
+  mat-option {
+    font-size: 14px;
+  }
+  
+  mat-dialog-title {
+    padding: 16px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .mat-dialog-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  @media (max-width: 600px) {
+    .mat-dialog-container {
+      max-width: 90%;
+    }
+  
+    mat-dialog-content {
+      padding: 10px;
+    }
+  
+    button {
+      min-width: 80px;
+    }
+  }
+  

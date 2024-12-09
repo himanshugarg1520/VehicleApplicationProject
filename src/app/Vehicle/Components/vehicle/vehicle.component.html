@@ -1,0 +1,80 @@
+
+
+<!-- 
+<table class="vehicle-table">
+  <thead>
+    <tr>
+      <th scope="col">Vehicle No</th>
+      <th scope="col">Type</th>
+      <th scope="col">Model No</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+     <tr *ngIf="!dataSource.data.length">
+      <td colspan="4" class="no-data">No vehicles available.</td>
+    </tr>
+    
+     <tr *ngFor="let vehicle of dataSource.data">
+      <td>{{ vehicle.vehicle.vehicleRegistrationNumber }}</td>
+      <td>{{ vehicle.vehicle.vehicleType }}</td>
+      <td>{{ vehicle.vehicle.vehicleModel }}</td>
+
+      <td>
+         <button mat-icon-button [matMenuTriggerFor]="menu" [attr.aria-label]="'Vehicle actions ' + vehicle.vehicle.vehicleRegistrationNumber">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+
+         <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onEdit(vehicle)" [attr.aria-label]="'Edit vehicle ' + vehicle.vehicle.vehicleRegistrationNumber">
+            Edit
+          </button>
+          <button mat-menu-item (click)="onDelete(vehicle)" [attr.aria-label]="'Delete Vehicle ' + vehicle.vehicle.vehicleRegistrationNumber">
+            Delete
+          </button>
+        </mat-menu>
+      </td>
+    </tr>
+  </tbody>
+</table> -->
+
+
+<table class="vehicle-table">
+  <thead>
+    <tr>
+      <th scope="col">Vehicle No</th>
+      <th scope="col">Type</th>
+      <th scope="col">Model No</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Display message if no vehicles are available -->
+    <tr *ngIf="!dataSource.data.length">
+      <td colspan="4" class="no-data">No vehicles available.</td>
+    </tr>
+
+    <!-- Loop through filtered vehicles and display them -->
+    <tr *ngFor="let vehicle of dataSource.data">
+      <td>{{ vehicle.vehicle.vehicleRegistrationNumber }}</td>
+      <td>{{ vehicle.vehicle.vehicleType }}</td>
+      <td>{{ vehicle.vehicle.vehicleModel }}</td>
+
+      <td>
+        <!-- Action menu for each vehicle (Edit/Delete) -->
+        <button mat-icon-button [matMenuTriggerFor]="menu" [attr.aria-label]="'Vehicle actions ' + vehicle.vehicle.vehicleRegistrationNumber">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onEdit(vehicle)" [attr.aria-label]="'Edit vehicle ' + vehicle.vehicle.vehicleRegistrationNumber">
+            Edit
+          </button>
+          <button mat-menu-item (click)="onDelete(vehicle)" [attr.aria-label]="'Delete Vehicle ' + vehicle.vehicle.vehicleRegistrationNumber">
+            Delete
+          </button>
+        </mat-menu>
+      </td>
+    </tr>
+  </tbody>
+</table>

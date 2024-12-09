@@ -1,0 +1,44 @@
+
+
+<div *ngIf="isLoading" class="loading-indicator">Loading...</div>
+
+<mat-form-field appearance="fill">
+  <mat-label>Vehicle Types</mat-label>
+  <mat-select
+    [(value)]="selectedFilters.vehicleType"
+    (selectionChange)="onVehicleTypeChange()"
+    multiple
+  >
+    <mat-option *ngFor="let type of vehicleTypes" [value]="type">
+      {{ type }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<mat-form-field appearance="fill">
+    <mat-label>Vehicle Models</mat-label>
+    <mat-select
+        [(value)]="selectedFilters.vehicleModel"
+        (selectionChange)="onVehicleModelChange()"
+        multiple
+    >
+        <mat-option *ngFor="let model of modelNos" [value]="model">
+            {{model}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+
+<div *ngIf="hasError" class="error-message">An error occurred. Please try again.</div>
+
+<div>
+  <button mat-button (click)="applyFilter()">Apply</button>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,166 @@
+<!-- <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Vehicle No</mat-label>
+      <input matInput formControlName="vehicleNo" maxlength="10" required />
+      <mat-error *ngIf="vehicleForm.get('vehicleNo')?.hasError('maxlength') && vehicleForm.get('vehicleNo')?.touched">
+        Max 10 characters allowed
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Chassis No</mat-label>
+      <input matInput formControlName="chassisNo" maxlength="17" required />
+      <mat-error *ngIf="vehicleForm.get('chassisNo')?.hasError('maxlength') && vehicleForm.get('chassisNo')?.touched">
+        Max 17 characters allowed
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Group</mat-label>
+      <mat-select formControlName="group" multiple>
+        <mat-option *ngFor="let group of groups" [value]="group">{{ group }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Manufacturer</mat-label>
+      <mat-select formControlName="manufacturer" (selectionChange)="onManufacturerChange($event.value)">
+        <mat-option *ngFor="let manufacturer of manufacturers" [value]="manufacturer">{{ manufacturer }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Model No</mat-label>
+      <mat-select formControlName="modelNo">
+        <mat-option *ngFor="let model of models" [value]="model">{{ model }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Engine No</mat-label>
+      <input matInput formControlName="engineNo" />
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit" [disabled]="vehicleForm.invalid">Submit</button>
+  </form>
+   -->
+
+
+<!-- 
+   <h2 mat-dialog-title>{{ data ? 'Edit Vehicle' : 'Add Vehicle' }}</h2>
+
+<form [formGroup]="vehicleForm" class="vehicle-form">
+  <mat-form-field>
+    <mat-label>Vehicle No</mat-label>
+    <input matInput formControlName="vehicleNo" placeholder="Enter vehicle number" />
+    <mat-error *ngIf="vehicleForm.get('vehicleNo')?.hasError('required')">
+      Vehicle number is required.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+    <input matInput formControlName="type" placeholder="Enter vehicle type" />
+    <mat-error *ngIf="vehicleForm.get('type')?.hasError('required')">
+      Vehicle type is required.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Model No</mat-label>
+    <input matInput formControlName="modelNo" placeholder="Enter model number" />
+    <mat-error *ngIf="vehicleForm.get('modelNo')?.hasError('required')">
+      Model number is required.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="dialog-actions">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onSave()" [disabled]="!vehicleForm.valid">
+      {{ data ? 'Update' : 'Save' }}
+    </button>
+  </div>
+</form> -->
+
+
+
+<h2 mat-dialog-title>{{ data ? 'Edit Vehicle' : 'Add Vehicle' }}</h2>
+
+<div class="form-container">
+  <form [formGroup]="vehicleForm" class="vehicle-form">
+    <mat-form-field>
+      <mat-label>Vehicle No</mat-label>
+      <input matInput formControlName="vehicleRegistrationNumber" maxlength="10" placeholder="Enter vehicle number" />
+      <mat-error *ngIf="vehicleForm.get('vehicleRegistrationNumber')?.hasError('required')">
+        Vehicle number is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Chassis No</mat-label>
+      <input matInput formControlName="chassisNumber" maxlength="17" placeholder="Enter chassis number" />
+      <mat-error *ngIf="vehicleForm.get('chassisNumber')?.hasError('required')">
+        Chassis number is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Vehicle Type</mat-label>
+      <input matInput formControlName="vehicleType" placeholder="Enter vehicle type" />
+    </mat-form-field>
+
+    <div formArrayName="groups">
+      <mat-form-field *ngFor="let groupControl of group.controls; let i = index">
+        <mat-label>Group {{ i + 1 }}</mat-label>
+        <input matInput [formControlName]="i" placeholder="Enter group" />
+        <button mat-icon-button (click)="removeGroup(i)">
+          <mat-icon>remove_circle</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <!-- <button mat-button (click)="addGroup()">Add Group</button> -->
+    <button mat-raised-button (click)="addGroup()">Add Group</button>
+
+    <mat-form-field>
+      <mat-label>Manufacturer</mat-label>
+      <mat-select formControlName="manufacturerName">
+        <mat-option *ngFor="let manufacturer of manufacturers" [value]="manufacturer">
+          {{ manufacturer }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Model No</mat-label>
+      <input matInput formControlName="vehicleModel" placeholder="Enter model number" />
+      <!-- <mat-error *ngIf="vehicleForm.get('vehicleModel')?.hasError('required')">
+        Model number is required.
+      </mat-error> -->
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Engine No</mat-label>
+      <input matInput formControlName="engineNo" placeholder="Enter engine number" />
+      <mat-error *ngIf="vehicleForm.get('engineNo')?.hasError('required')">
+        Engine number is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" placeholder="Enter description">
+    </mat-form-field>
+
+    <div class="dialog-actions">
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-raised-button color="primary" (click)="onSave()" [disabled]="vehicleForm.invalid">
+        {{ data ? 'Update' : 'Save' }}
+      </button>
+      <!-- <button mat-raised-button color="primary" (click)="onSave()">
+        {{ data ? 'Update' : 'Save' }}
+      </button> -->
+
+    </div>
+  </form>
+</div>       
